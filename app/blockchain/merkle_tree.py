@@ -1,22 +1,4 @@
 import hashlib
-import time
-
-# hash each transaction into crypto hash
-# pair up hashes and hash again - recursively combine until you get a merkle root
-# if odd number of transactions, duplicate last one
-# return the merkle root
-
-
-# How a Merkle Proof Works
-# Merkle Tree implementation to support Merkle Proofs.
-# A Merkle Proof allows you to verify whether a specific transaction
-# exists in a Merkle Tree without revealing the entire tree.
-# If you want to prove that a transaction (e.g., Tx3) is in a block:
-
-# Find the transaction's hash in the first layer.
-# Store only the necessary sibling hashes (not the entire tree).
-# Use these sibling hashes to reconstruct the Merkle Root.
-# If the computed root matches the real root, the transaction is verified.
 
 
 class MerkleTree:
@@ -99,6 +81,7 @@ class MerkleTree:
                 proof.append((layer[current_idx - 1], "left"))
 
             # Move to parent index in next layer
+            # bez reszty ffs
             current_idx //= 2
 
         return proof
@@ -126,44 +109,3 @@ class MerkleTree:
         print("Expected Root:", root)
 
         return current_hash == root
-
-
-class Block:
-    def __init__(self, transactions: list[str], prev_hash: str) -> None:
-        """Initialize a new block."""
-        self.timestamp: float = time.time()  # Block creation time
-        self.prev_hash: str = prev_hash  # Link to previous block
-        self.merkle_tree: MerkleTree = MerkleTree(transactions)  # Store transactions in Merkle Tree
-        self.merkle_root: str | None = self.merkle_tree.get_merkle_root()
-        self.nonce: int = 0  # Used for Proof of Work (if needed)
-        self.hash: str = self.calculate_hash()  # Current block's hash
-
-    def hash_function(self, data: str) -> str:
-        """Returns SHA-256 hash of input data."""
-        return hashlib.sha256(data.encode()).hexdigest()
-
-    def calculate_hash(self) -> str:
-        """Compute the block's hash."""
-        block_content: str = f"{self.timestamp}{self.prev_hash}{self.merkle_root}{self.nonce}"
-        return self.hash_function(block_content)
-
-    def __repr__(self) -> str:
-        return f"Block(Hash: {self.hash}, Prev: {self.prev_hash}, Merkle Root: {self.merkle_root})"
-
-
-if __name__ == "__main__":
-    transactions: list[str] = ["Tx1", "Tx2", "Tx3", "Tx4"]
-
-    # Create a new block (using a dummy previous hash)
-    block: Block = Block(transactions, prev_hash="0000000000000000000000000000000000000000000000000000000000000000")
-
-    print(f"Block Created: {block}")
-    print(f"\nMerkle Root: {block.merkle_root}")
-
-    # Generate a Merkle Proof for "Tx3" using the block's Merkle Tree
-    proof = block.merkle_tree.get_merkle_proof("Tx3")
-    print("\nMerkle Proof for Tx3:", proof)
-
-    # Verify the Merkle Proof
-    is_valid = block.merkle_tree.verify_merkle_proof("Tx3", proof, block.merkle_root)
-    print("\nIs Tx3 Valid in the Block?", is_valid)

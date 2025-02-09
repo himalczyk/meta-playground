@@ -3,5 +3,6 @@ black==25.1.0
 isort==6.0.0
 flake8==7.1.1
 mypy-extensions==1.0.0
-
+fastapi[all]>=0.109.0
+pydantic>=2.6.0
 
