@@ -68,3 +68,10 @@ db.sqlite3-journal
 *.spec
 pip-log.txt
 pip-delete-this-directory.txt
+.pytest-cache/
+.mypy_cache/
+.coverage/
+.hypothesis/
+.ipynb_checkpoints/
+.ipynb_checkpoints/
+

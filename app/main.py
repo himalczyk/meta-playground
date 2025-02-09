@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from blockchain.dto import BlockDTO, TransactionDTO
-from blockchain.handler import BlockHandler
+from blockchain.handler import Block
 
 # hash each transaction into crypto hash
 # pair up hashes and hash again - recursively combine until you get a merkle root
@@ -18,6 +18,27 @@ from blockchain.handler import BlockHandler
 # Store only the necessary sibling hashes (not the entire tree).
 # Use these sibling hashes to reconstruct the Merkle Root.
 # If the computed root matches the real root, the transaction is verified.
+
+# Reserved for future main implementation
+# async def main() -> None:
+#     # Create blockchain with custom KeyDB configuration
+#     keydb_client = KeyDBClient(host="keydb.example.com", port=6379, max_connections=20)
+#     blockchain = PersistentBlockchain(keydb_client)
+
+#     # Initialize the chain
+#     await blockchain.initialize()
+
+#     # Use the blockchain
+#     await blockchain.store_block("0x123", {"number": 1})
+
+#     # Clean up
+#     await blockchain.close()
+
+
+# if __name__ == "__main__":
+#     import asyncio
+
+#     asyncio.run(main())
 
 
 if __name__ == "__main__":
@@ -54,7 +75,7 @@ if __name__ == "__main__":
         gasLimit=15000000,
     )
 
-    block = BlockHandler(block_dto)
+    block = Block(block_dto)
 
     print(f"Block Created: {block}")
     print(f"\nMerkle Root: {block.merkle_root}")
