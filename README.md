@@ -1,5 +1,8 @@
 # My blockchain playground
 
+[![Python Application CI](https://github.com/himalczyk/meta-playground/actions/workflows/python-app.yml/badge.svg)](https://github.com/himalczyk/meta-playground/actions/workflows/python-app.yml)
+[![codecov](https://codecov.io/gh/himalczyk/meta-playground/branch/master/graph/badge.svg)](https://codecov.io/gh/himalczyk/meta-playground)
+
 Just a playground for me to learn about blockchain technology.
 Going full improvisation here. Learning about blockchain by building one and creating a version of it with my own understanding.
 
