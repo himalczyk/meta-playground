@@ -1,3 +1,37 @@
+# My blockchain playground
+
+Just a playground for me to learn about blockchain technology.
+Going full improvisation here. Learning about blockchain by building one and creating a version of it with my own understanding.
+
+# What I want to create
+
+Is a simple blockchain implementation in Python that consists of blocks and transactions. The blocks have correctly hashed transactions with Merkle Tree to verify the integrity of the transactions. I want to implement a blockchain that will be a linked list of blocks. The blocks in the blockchain will will be stored in KeyDB for simplicity and speed.For transactions I want to use ERC20 standard and implement a simple contract that will be used to send fake USD to other addresses. 
+
+I want to also implement a simple proof of work algorithm to mine new blocks.
+And I also want to implement a simple REST API to interact with the blockchain.
+
+
+# Tech stack
+
+# Technologies
+
+- Python
+- FastAPI
+- Pydantic
+- KeyDB
+- Pytest
+- aiohttp/asyncio
+
+# Linters
+
+- Black
+- Flake8
+- Mypy
+- Bandit
+- Coverage
+- Isort
+
+
 # Merkle Tree Implementation
 
 ## What is a Merkle Tree?
