@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from blockchain.dto import BlockDTO, TransactionDTO
-from blockchain.handler import Block
+from blockchain.handler import BlockHandler
 
 # hash each transaction into crypto hash
 # pair up hashes and hash again - recursively combine until you get a merkle root
@@ -54,7 +54,7 @@ if __name__ == "__main__":
         gasLimit=15000000,
     )
 
-    block = Block(block_dto)
+    block = BlockHandler(block_dto)
 
     print(f"Block Created: {block}")
     print(f"\nMerkle Root: {block.merkle_root}")

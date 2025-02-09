@@ -5,7 +5,7 @@ from .dto import BlockDTO, TransactionDTO
 from .merkle_tree import MerkleTree
 
 
-class Block:
+class BlockHandler:
     def __init__(self, block_dto: BlockDTO) -> None:
         """Initialize a new block from BlockDTO."""
         self.timestamp: datetime = block_dto.timestamp
